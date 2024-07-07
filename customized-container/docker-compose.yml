@@ -1,15 +1,27 @@
 version: "3.5"
 services:
   notebooks:
-    container_name: tutorial-mlflow
+    container_name: tutorial-mlflow-notebooks
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.notebooks
     command: ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=${NOTEBOOK_TOKEN}"]
     volumes:
-      - ../:/src
+      - ../code:/src
     ports:
       - 8888:8888
+    env_file:
+      - .env
+  server:
+    container_name: tutorial-mlflow-server
+    build: 
+      context: .
+      dockerfile: Dockerfile.server
+    command: ["mlflow", "ui", "--host=0.0.0.0", "--backend-store-uri", "file:///mlflow"]
+    #command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ../mlflow:/mlflow
+    ports:
       - 5000:5000
     env_file:
       - .env
