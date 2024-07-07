@@ -1,4 +1,4 @@
-# tutorial-transformers
+# tutorial-MLflow
 Introduction to machine learning platforms and ML Flow
 
 [Slides](https://docs.google.com/presentation/d/18QDEEocdfVoyKGkGgDKhdjaslEBfEWiIORwUIQwICKs/edit?usp=sharing)
