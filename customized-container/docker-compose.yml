@@ -17,7 +17,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.server
-    command: ["mlflow", "ui", "--host=0.0.0.0", "--backend-store-uri", "file:///mlflow"]
+    command: ["mlflow", "ui", "--host=0.0.0.0", "--backend-store-uri=file:///mlflow", "--port=5000"]
     #command: ["tail", "-f", "/dev/null"]
     volumes:
       - ../mlflow:/mlflow
